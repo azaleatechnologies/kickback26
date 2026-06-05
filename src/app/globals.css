@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------
+   July 3rd Kickback '26 — design tokens
+   Locked palette: Coastal Mobile Bay (sunset → teal) + sandy off-white
+   Locked type: festival-loud display (Anton) + clean body (Inter)
+   --------------------------------------------------------------------- */
+
+:root {
+  /* Coastal Mobile Bay palette — raw values */
+  --bay-deep:    #0E2A3A;  /* near-black teal — main background */
+  --bay-mid:     #1F4E5F;  /* mid teal — elevated surfaces */
+  --bay-fog:     #2C6B7F;  /* lighter teal — borders, muted text */
+  --sand:        #F5E9D6;  /* sandy off-white — primary text */
+  --sand-dim:    #D9C9AE;  /* muted sand — secondary text */
+  --sunset:      #F26B3A;  /* primary accent — sunset orange */
+  --sunset-warm: #F4B85A;  /* secondary accent — golden hour */
+  --foam:        #FFFFFF;  /* high contrast highlights */
+
+  --background: var(--bay-deep);
+  --foreground: var(--sand);
+}
+
+@theme inline {
+  /* Expose palette as Tailwind utilities (bg-bay-deep, text-sunset, etc.) */
+  --color-bay-deep:    var(--bay-deep);
+  --color-bay-mid:     var(--bay-mid);
+  --color-bay-fog:     var(--bay-fog);
+  --color-sand:        var(--sand);
+  --color-sand-dim:    var(--sand-dim);
+  --color-sunset:      var(--sunset);
+  --color-sunset-warm: var(--sunset-warm);
+  --color-foam:        var(--foam);
+
+  --color-background:  var(--background);
+  --color-foreground:  var(--foreground);
+
+  /* Typography */
+  --font-display: var(--font-anton);
+  --font-sans:    var(--font-inter);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-display), Impact, "Arial Narrow Bold", sans-serif;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
