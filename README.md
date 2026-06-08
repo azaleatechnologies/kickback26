@@ -2,10 +2,12 @@
 
 Event site for the third annual Kickback. Friday, July 3, 2026. Mobile Bay.
 
-- **Production URL:** kickback26.com (registered 2026-05-19, not yet deployed)
+- **Production URL:** kickback26.com (registered 2026-05-19, deploy pending Coolify wire-up)
+- **Repo:** github.com/azaleatechnologies/kickback26
 - **Deploy target:** Azalea Technologies mac mini (192.168.1.138) via Coolify
 - **Master plan:** `../PLAN.md`
 - **Design system:** `../DESIGN.md`
+- **Deploy guide:** `../DEPLOY.md`
 
 ## Stack
 
@@ -31,7 +33,7 @@ Then open http://localhost:3000.
 
 ## Current state
 
-Phase 2.0 (scaffold). The placeholder landing page shows the locked visual identity — coastal palette, festival type, hero countdown — but RSVP/auth/data aren't wired yet.
+Phase 2.0 (deploy-ready scaffold). The placeholder landing page shows the locked visual identity — coastal palette, festival type, hero countdown. Dockerfile + standalone build config in place; Coolify can build it. RSVP/auth/data still to be wired (next code chunk).
 
 ## Project layout
 

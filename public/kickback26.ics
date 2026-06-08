@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Kickback 26//Save the Date//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:kickback26-2026@kickback26.com
+DTSTAMP:20260601T000000Z
+DTSTART:20260703T220000Z
+DTEND:20260704T060000Z
+SUMMARY:July 3rd Kickback '26
+LOCATION:Mobile Bay, AL
+DESCRIPTION:Year three of the July 3rd Kickback. Swimming, cornhole, grilling, bonfire, and 4th-of-July-eve fireworks. RSVP at https://kickback26.com
+URL:https://kickback26.com
+END:VEVENT
+END:VCALENDAR

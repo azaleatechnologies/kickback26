@@ -16,7 +16,10 @@ WORKDIR /app
 # libc6-compat needed by some npm deps (e.g. sharp on Alpine).
 RUN apk add --no-cache libc6-compat
 
+# Copy the Prisma schema before install so the `postinstall: prisma generate`
+# script has a schema to read.
 COPY package.json package-lock.json* ./
+COPY prisma ./prisma
 RUN npm ci --no-audit --no-fund
 
 

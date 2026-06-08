@@ -21,6 +21,10 @@ export default function Countdown({ targetIso }: Props) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    // Seeding the real countdown on mount (rather than during render) is what
+    // keeps SSR output stable and avoids a hydration mismatch — the cascading-
+    // render cost is one extra paint, which is fine for a once-mounted clock.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
     setT(diff(target));
     const id = setInterval(() => setT(diff(target)), 1000);

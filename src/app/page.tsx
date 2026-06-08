@@ -1,4 +1,6 @@
+import Link from "next/link";
 import Countdown from "@/components/Countdown";
+import AddToCalendar from "@/components/AddToCalendar";
 
 export default function Home() {
   return (
@@ -32,29 +34,37 @@ export default function Home() {
 
         <Countdown targetIso="2026-07-03T17:00:00-05:00" />
 
-        <a
-          href="#rsvp"
-          className="mt-10 inline-flex items-center justify-center rounded-full bg-sunset px-8 py-3 font-display text-bay-deep text-xl tracking-wider hover:bg-sunset-warm transition-colors"
-        >
-          RSVP
-        </a>
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+          <Link
+            href="/rsvp"
+            className="inline-flex items-center justify-center rounded-full bg-sunset px-8 py-3 font-display text-bay-deep text-xl tracking-wider hover:bg-sunset-warm transition-colors"
+          >
+            RSVP
+          </Link>
+          <Link
+            href="/info"
+            className="inline-flex items-center justify-center rounded-full border border-sand/40 px-8 py-3 font-display text-sand text-xl tracking-wider hover:border-sunset hover:text-sunset-warm transition-colors"
+          >
+            The Info
+          </Link>
+        </div>
+
+        <AddToCalendar />
       </section>
 
-      {/* Placeholder: lineup / info / etc. ship in subsequent phases */}
-      <section
-        id="rsvp"
-        className="border-t border-bay-fog/40 bg-bay-mid/60 px-6 py-20 text-center"
-      >
+      {/* The "RSVP to get on the poster" lineup lands here in v1.1 */}
+      <section className="border-t border-bay-fog/40 bg-bay-mid/60 px-6 py-20 text-center">
         <p className="font-display text-sunset-warm tracking-[0.3em] text-sm">
-          Coming soon
+          One night only
         </p>
         <h2 className="font-display text-foam text-4xl sm:text-6xl mt-2">
-          Lineup &middot; RSVP &middot; The Plan
+          Lock it in
         </h2>
         <p className="mt-6 max-w-lg mx-auto text-sand-dim">
-          The site fills in over the next eight weeks. Wristbands ship June 19.
-          Bookmark{" "}
-          <span className="text-sand font-medium">kickback26.com</span>.
+          RSVP so we can mail your wristband and save you a spot.{" "}
+          <Link href="/rsvp" className="text-sand font-medium underline decoration-sunset/60 underline-offset-4 hover:text-sunset-warm">
+            Claim your spot →
+          </Link>
         </p>
       </section>
     </main>
