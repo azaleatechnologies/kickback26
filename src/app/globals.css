@@ -2,52 +2,86 @@
 
 /* ---------------------------------------------------------------------
    July 3rd Kickback '26 — design tokens
-   Locked palette: Coastal Mobile Bay (sunset → teal) + sandy off-white
-   Locked type: festival-loud display (Anton) + clean body (Inter)
+   Minimalist. Sky photo background. Mayluna display + Helvetica-255 body.
    --------------------------------------------------------------------- */
 
-:root {
-  /* Coastal Mobile Bay palette — raw values */
-  --bay-deep:    #0E2A3A;  /* near-black teal — main background */
-  --bay-mid:     #1F4E5F;  /* mid teal — elevated surfaces */
-  --bay-fog:     #2C6B7F;  /* lighter teal — borders, muted text */
-  --sand:        #F5E9D6;  /* sandy off-white — primary text */
-  --sand-dim:    #D9C9AE;  /* muted sand — secondary text */
-  --sunset:      #F26B3A;  /* primary accent — sunset orange */
-  --sunset-warm: #F4B85A;  /* secondary accent — golden hour */
-  --foam:        #FFFFFF;  /* high contrast highlights */
+@font-face {
+  font-family: "Mayluna";
+  src: url("/fonts/MaylunaDemo.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 
-  --background: var(--bay-deep);
-  --foreground: var(--sand);
+@font-face {
+  font-family: "Helvetica255";
+  src: url("/fonts/Helvetica-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Helvetica255";
+  src: url("/fonts/Helvetica.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Helvetica255";
+  src: url("/fonts/Helvetica-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --white:      #ffffff;
+  --white-70:   rgba(255,255,255,0.70);
+  --white-40:   rgba(255,255,255,0.40);
+  --white-15:   rgba(255,255,255,0.15);
+  --black:      #000000;
+  --black-50:   rgba(0,0,0,0.50);
+  --black-20:   rgba(0,0,0,0.20);
 }
 
 @theme inline {
-  /* Expose palette as Tailwind utilities (bg-bay-deep, text-sunset, etc.) */
-  --color-bay-deep:    var(--bay-deep);
-  --color-bay-mid:     var(--bay-mid);
-  --color-bay-fog:     var(--bay-fog);
-  --color-sand:        var(--sand);
-  --color-sand-dim:    var(--sand-dim);
-  --color-sunset:      var(--sunset);
-  --color-sunset-warm: var(--sunset-warm);
-  --color-foam:        var(--foam);
+  --color-white:    var(--white);
+  --color-white-70: var(--white-70);
+  --color-white-40: var(--white-40);
+  --color-white-15: var(--white-15);
+  --color-black:    var(--black);
+  --color-black-50: var(--black-50);
+}
 
-  --color-background:  var(--background);
-  --color-foreground:  var(--foreground);
-
-  /* Typography */
-  --font-display: var(--font-anton);
-  --font-sans:    var(--font-inter);
+html, body {
+  height: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans), system-ui, sans-serif;
+  font-family: "Helvetica255", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  color: var(--white);
+  background: #6aA4C8;
 }
 
 .font-display {
-  font-family: var(--font-display), Impact, "Arial Narrow Bold", sans-serif;
-  letter-spacing: -0.02em;
-  text-transform: uppercase;
+  font-family: "Mayluna", Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  text-transform: none;
+}
+
+.font-sans {
+  font-family: "Helvetica255", Helvetica, Arial, sans-serif;
+}
+
+/* Text shadow utilities — keeps white text legible against variable sky */
+.text-shadow {
+  text-shadow: 0 1px 8px rgba(0,0,0,0.35), 0 0px 2px rgba(0,0,0,0.25);
+}
+.text-shadow-sm {
+  text-shadow: 0 1px 4px rgba(0,0,0,0.40);
 }

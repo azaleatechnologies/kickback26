@@ -36,19 +36,32 @@ export default async function RsvpPage() {
   };
 
   return (
-    <main className="flex flex-1 flex-col items-center px-6 py-16 sm:py-24">
-      <div className="w-full max-w-xl">
+    <main
+      className="relative flex flex-1 flex-col items-center px-6 py-16 sm:py-24"
+      style={{
+        backgroundImage: "url('/bg.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center top",
+        backgroundAttachment: "fixed",
+      }}
+    >
+      <div
+        aria-hidden
+        className="fixed inset-0 pointer-events-none"
+        style={{ background: "rgba(0,0,0,0.28)", zIndex: 0 }}
+      />
+      <div className="relative z-10 w-full max-w-xl">
         <Link
           href="/"
-          className="font-display text-sand-dim text-xs tracking-[0.3em] hover:text-sunset-warm"
+          className="text-white text-xs tracking-widest uppercase hover:opacity-70 transition-opacity text-shadow-sm"
         >
           ← Kickback &rsquo;26
         </Link>
 
-        <h1 className="mt-4 font-display text-foam text-5xl sm:text-6xl">
+        <h1 className="mt-4 font-display text-white text-5xl sm:text-6xl">
           RSVP
         </h1>
-        <p className="mt-3 text-sand-dim">
+        <p className="mt-3 text-white/70">
           Friday, July 3, 2026 · Mobile Bay · One night only.
         </p>
 
@@ -59,7 +72,7 @@ export default async function RsvpPage() {
               <form action={signOutAction} className="mt-8">
                 <button
                   type="submit"
-                  className="font-display text-sand-dim text-xs tracking-widest hover:text-sunset-warm"
+                  className="text-white/50 text-xs tracking-widest uppercase hover:text-white transition-opacity"
                 >
                   Sign out
                 </button>
@@ -73,3 +86,4 @@ export default async function RsvpPage() {
     </main>
   );
 }
+

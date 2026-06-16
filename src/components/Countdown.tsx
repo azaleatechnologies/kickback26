@@ -48,12 +48,12 @@ export default function Countdown({ targetIso }: Props) {
       {cells.map(([value, label]) => (
         <div
           key={label}
-          className="min-w-[64px] sm:min-w-[88px] rounded-lg border border-bay-fog/40 bg-bay-deep/60 px-3 py-2 backdrop-blur-sm"
+          className="min-w-[64px] sm:min-w-[88px] rounded-xl border border-white/30 bg-white/10 px-3 py-2 backdrop-blur-sm"
         >
-          <div className="font-display text-foam text-3xl sm:text-5xl leading-none">
+          <div className="font-display text-white text-3xl sm:text-5xl leading-none">
             {mounted ? String(value).padStart(2, "0") : "--"}
           </div>
-          <div className="mt-1 font-sans text-[10px] sm:text-xs uppercase tracking-widest text-sand-dim">
+          <div className="mt-1 text-[10px] sm:text-xs uppercase tracking-widest text-white/60">
             {label}
           </div>
         </div>

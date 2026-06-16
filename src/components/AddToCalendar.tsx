@@ -4,10 +4,10 @@ import { googleCalendarUrl } from "@/lib/event";
 // .ics (Apple Calendar, Outlook, etc.). The .ics is a static file in /public.
 export default function AddToCalendar() {
   const pill =
-    "inline-flex items-center justify-center rounded-full border border-sand/40 px-5 py-2.5 font-display text-sand text-sm tracking-wider transition-colors hover:border-sunset hover:text-sunset-warm";
+    "inline-flex items-center justify-center rounded-full border border-white/40 px-5 py-2.5 text-white text-xs tracking-widest uppercase transition-opacity hover:opacity-70";
   return (
-    <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
-      <span className="font-display text-sand-dim text-xs tracking-[0.3em]">
+    <div className="flex flex-wrap items-center justify-center gap-3">
+      <span className="text-white text-xs tracking-widest uppercase text-shadow-sm">
         Save the date
       </span>
       <a

@@ -9,6 +9,11 @@ const nextConfig: NextConfig = {
   outputFileTracingIncludes: {
     "/*": ["./node_modules/.prisma/client/**/*"],
   },
+  // Pin Turbopack's workspace root to this directory so it doesn't get confused
+  // by other lockfiles higher up in the filesystem (e.g. ~/package-lock.json).
+  turbopack: {
+    root: __dirname,
+  },
 };
 
 export default nextConfig;

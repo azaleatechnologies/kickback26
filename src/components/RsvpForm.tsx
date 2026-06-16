@@ -24,8 +24,8 @@ const SLEEPING_OPTIONS: { value: RsvpInitial["sleeping"]; label: string }[] = [
 ];
 
 const field =
-  "rounded-lg border border-bay-fog/50 bg-bay-deep/70 px-4 py-3 text-sand placeholder:text-sand-dim/60 outline-none focus:border-sunset";
-const labelCls = "font-display text-sand text-sm tracking-wide";
+  "rounded-lg border border-white/30 bg-white/10 backdrop-blur-sm px-4 py-3 text-white placeholder:text-white/40 outline-none focus:border-white/60";
+const labelCls = "text-white/80 text-sm tracking-wide";
 
 export default function RsvpForm({ initial }: { initial: RsvpInitial }) {
   const [state, action, pending] = useActionState<RsvpState, FormData>(
@@ -36,8 +36,8 @@ export default function RsvpForm({ initial }: { initial: RsvpInitial }) {
 
   return (
     <form action={action} className="flex flex-col gap-5">
-      <p className="text-sand-dim text-sm">
-        Signed in as <span className="text-sand">{initial.email}</span>. Update
+      <p className="text-white/50 text-sm">
+        Signed in as <span className="text-white">{initial.email}</span>. Update
         your answers anytime before the cutoff.
       </p>
 
@@ -67,7 +67,7 @@ export default function RsvpForm({ initial }: { initial: RsvpInitial }) {
           ).map(([value, label]) => (
             <label
               key={value}
-              className="flex cursor-pointer items-center justify-center rounded-lg border border-bay-fog/50 bg-bay-deep/40 px-3 py-3 text-center text-sand has-[:checked]:border-sunset has-[:checked]:bg-sunset/15"
+              className="flex cursor-pointer items-center justify-center rounded-lg border border-white/30 bg-white/10 px-3 py-3 text-center text-white has-[:checked]:border-white has-[:checked]:bg-white/20 backdrop-blur-sm"
             >
               <input
                 type="radio"
@@ -84,13 +84,13 @@ export default function RsvpForm({ initial }: { initial: RsvpInitial }) {
       </fieldset>
 
       <div className="flex flex-col gap-2">
-        <label className="flex items-center gap-3 text-sand">
+        <label className="flex items-center gap-3 text-white">
           <input
             type="checkbox"
             name="plusOne"
             defaultChecked={initial.plusOne}
             onChange={(e) => setPlusOne(e.target.checked)}
-            className="h-4 w-4 accent-sunset"
+            className="h-4 w-4 accent-white"
           />
           Bringing a +1
         </label>
@@ -115,7 +115,7 @@ export default function RsvpForm({ initial }: { initial: RsvpInitial }) {
           className={field}
         >
           {SLEEPING_OPTIONS.map((o) => (
-            <option key={o.value} value={o.value} className="bg-bay-deep">
+            <option key={o.value} value={o.value} className="bg-sky-800">
               {o.label}
             </option>
           ))}
@@ -124,7 +124,7 @@ export default function RsvpForm({ initial }: { initial: RsvpInitial }) {
 
       <div className="flex flex-col gap-1.5">
         <label htmlFor="dietary" className={labelCls}>
-          Dietary needs <span className="text-sand-dim">(optional)</span>
+          Dietary needs <span className="text-white/40">(optional)</span>
         </label>
         <input
           id="dietary"
@@ -137,8 +137,7 @@ export default function RsvpForm({ initial }: { initial: RsvpInitial }) {
 
       <div className="flex flex-col gap-1.5">
         <label htmlFor="mailingAddress" className={labelCls}>
-          Mailing address{" "}
-          <span className="text-sand-dim">(for your wristband)</span>
+          Mailing address <span className="text-white/40">(for your wristband)</span>
         </label>
         <textarea
           id="mailingAddress"
@@ -148,7 +147,7 @@ export default function RsvpForm({ initial }: { initial: RsvpInitial }) {
           placeholder="Street, city, state, ZIP"
           className={field}
         />
-        <p className="text-sand-dim text-xs">
+        <p className="text-white/40 text-xs">
           We mail every guest a printed wristband. Skip it if you&rsquo;d rather
           grab yours at the door.
         </p>
@@ -156,7 +155,7 @@ export default function RsvpForm({ initial }: { initial: RsvpInitial }) {
 
       <div className="flex flex-col gap-1.5">
         <label htmlFor="notes" className={labelCls}>
-          Anything else? <span className="text-sand-dim">(optional)</span>
+          Anything else? <span className="text-white/40">(optional)</span>
         </label>
         <textarea
           id="notes"
@@ -171,7 +170,7 @@ export default function RsvpForm({ initial }: { initial: RsvpInitial }) {
       <button
         type="submit"
         disabled={pending}
-        className="mt-2 rounded-full bg-sunset px-6 py-3 font-display text-bay-deep text-lg tracking-wider transition-colors hover:bg-sunset-warm disabled:opacity-60"
+        className="mt-2 rounded-full bg-white text-black px-6 py-3 text-sm tracking-widest uppercase transition-opacity hover:opacity-80 disabled:opacity-40"
       >
         {pending ? "Saving…" : "Save my RSVP"}
       </button>
@@ -179,7 +178,7 @@ export default function RsvpForm({ initial }: { initial: RsvpInitial }) {
       {state && (
         <p
           role="status"
-          className={`text-sm ${state.ok ? "text-sunset-warm" : "text-red-300"}`}
+          className={`text-sm ${state.ok ? "text-white" : "text-red-300"}`}
         >
           {state.message}
         </p>

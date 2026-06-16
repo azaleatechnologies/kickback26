@@ -5,67 +5,60 @@ import AddToCalendar from "@/components/AddToCalendar";
 export default function Home() {
   return (
     <main className="flex flex-1 flex-col">
-      {/* Hero */}
-      <section className="relative flex flex-1 flex-col items-center justify-center px-6 py-24 text-center overflow-hidden">
-        {/* Sunset gradient wash behind the wordmark */}
+      {/* Full-bleed hero — sky photo fills the viewport */}
+      <section
+        className="relative flex flex-1 flex-col items-center justify-center min-h-screen px-6 text-center overflow-hidden"
+        style={{
+          backgroundImage: "url('/bg.jpg')",
+          backgroundSize: "cover",
+          backgroundPosition: "center top",
+        }}
+      >
+        {/* Scrim — enough to anchor white text without killing the photo */}
         <div
           aria-hidden
-          className="absolute inset-0 -z-10 opacity-60"
+          className="absolute inset-0 pointer-events-none"
           style={{
-            background:
-              "radial-gradient(ellipse at 50% 100%, var(--color-sunset) 0%, var(--color-sunset-warm) 25%, var(--color-bay-mid) 55%, var(--color-bay-deep) 90%)",
+            background: "linear-gradient(to bottom, rgba(0,0,0,0.10) 0%, rgba(0,0,0,0.40) 100%)",
           }}
         />
 
-        {/* Stacked festival wordmark */}
-        <p className="font-display text-sand-dim text-lg sm:text-2xl tracking-[0.4em]">
-          July 3rd
-        </p>
-        <h1 className="font-display text-foam text-[18vw] sm:text-[14vw] md:text-[12rem] leading-[0.85] my-2">
-          Kickback
-        </h1>
-        <p className="font-display text-sunset-warm text-4xl sm:text-6xl tracking-tight">
-          &rsquo;26
-        </p>
-
-        <p className="mt-8 max-w-md text-sand-dim font-sans text-base sm:text-lg">
-          Year three. Friday, July 3, 2026. Mobile Bay. One night only.
-        </p>
-
-        <Countdown targetIso="2026-07-03T17:00:00-05:00" />
-
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-          <Link
-            href="/rsvp"
-            className="inline-flex items-center justify-center rounded-full bg-sunset px-8 py-3 font-display text-bay-deep text-xl tracking-wider hover:bg-sunset-warm transition-colors"
+        {/* Wordmark */}
+        <div className="relative z-10 flex flex-col items-center">
+          <p className="text-white text-sm tracking-[0.25em] uppercase mb-2 text-shadow-sm">
+            July 3rd, 2026 · Mobile Bay
+          </p>
+          <h1
+            className="font-display text-white leading-none text-shadow"
+            style={{ fontSize: "clamp(4rem, 18vw, 14rem)" }}
           >
-            RSVP
-          </Link>
-          <Link
-            href="/info"
-            className="inline-flex items-center justify-center rounded-full border border-sand/40 px-8 py-3 font-display text-sand text-xl tracking-wider hover:border-sunset hover:text-sunset-warm transition-colors"
-          >
-            The Info
-          </Link>
+            Kickback
+          </h1>
+          <p className="font-display text-white text-3xl sm:text-5xl mt-1 text-shadow">
+            &rsquo;26
+          </p>
+
+          <Countdown targetIso="2026-07-03T17:00:00-05:00" />
+
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
+            <Link
+              href="/rsvp"
+              className="rounded-full bg-white text-black px-8 py-3 text-sm tracking-widest uppercase transition-opacity hover:opacity-80"
+            >
+              RSVP
+            </Link>
+            <Link
+              href="/info"
+              className="rounded-full border border-white text-white px-8 py-3 text-sm tracking-widest uppercase transition-opacity hover:opacity-70 text-shadow-sm"
+            >
+              Info
+            </Link>
+          </div>
+
+          <div className="mt-8">
+            <AddToCalendar />
+          </div>
         </div>
-
-        <AddToCalendar />
-      </section>
-
-      {/* The "RSVP to get on the poster" lineup lands here in v1.1 */}
-      <section className="border-t border-bay-fog/40 bg-bay-mid/60 px-6 py-20 text-center">
-        <p className="font-display text-sunset-warm tracking-[0.3em] text-sm">
-          One night only
-        </p>
-        <h2 className="font-display text-foam text-4xl sm:text-6xl mt-2">
-          Lock it in
-        </h2>
-        <p className="mt-6 max-w-lg mx-auto text-sand-dim">
-          RSVP so we can mail your wristband and save you a spot.{" "}
-          <Link href="/rsvp" className="text-sand font-medium underline decoration-sunset/60 underline-offset-4 hover:text-sunset-warm">
-            Claim your spot →
-          </Link>
-        </p>
       </section>
     </main>
   );
