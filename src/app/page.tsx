@@ -29,14 +29,12 @@ export default function Home() {
             July 3rd, 2026 · Mobile Bay
           </p>
           <h1
-            className="font-display text-white leading-none text-shadow"
-            style={{ fontSize: "clamp(4rem, 18vw, 14rem)" }}
+            className="font-display text-white leading-none text-shadow whitespace-nowrap flex items-baseline justify-center"
+            style={{ fontSize: "clamp(3.5rem, 16vw, 13rem)" }}
           >
             Kickback
+            <span className="text-[0.32em] ml-[0.15em]">&rsquo;26</span>
           </h1>
-          <p className="font-display text-white text-3xl sm:text-5xl mt-1 text-shadow">
-            &rsquo;26
-          </p>
 
           <Countdown targetIso="2026-07-03T17:00:00-05:00" />
 
