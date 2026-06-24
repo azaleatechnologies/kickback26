@@ -10,17 +10,14 @@ export type RsvpInitial = {
   plusOne: boolean;
   plusOneName: string;
   dietary: string;
-  sleeping: "HOUSE" | "TENT" | "CAR" | "COMMUTING" | "UNSURE";
+  sleeping: "HOUSE" | "UNSURE";
   mailingAddress: string;
   notes: string;
 };
 
 const SLEEPING_OPTIONS: { value: RsvpInitial["sleeping"]; label: string }[] = [
-  { value: "HOUSE", label: "Crashing at the house" },
-  { value: "TENT", label: "Bringing a tent" },
-  { value: "CAR", label: "Sleeping in my car" },
-  { value: "COMMUTING", label: "Heading home that night" },
-  { value: "UNSURE", label: "Not sure yet" },
+  { value: "HOUSE", label: "At the house" },
+  { value: "UNSURE", label: "Wherever I pass out" },
 ];
 
 const field =
@@ -137,7 +134,7 @@ export default function RsvpForm({ initial }: { initial: RsvpInitial }) {
 
       <div className="flex flex-col gap-1.5">
         <label htmlFor="mailingAddress" className={labelCls}>
-          Mailing address <span className="text-white/40">(for your wristband)</span>
+          Mailing address
         </label>
         <textarea
           id="mailingAddress"
@@ -147,10 +144,6 @@ export default function RsvpForm({ initial }: { initial: RsvpInitial }) {
           placeholder="Street, city, state, ZIP"
           className={field}
         />
-        <p className="text-white/40 text-xs">
-          We mail every guest a printed wristband. Skip it if you&rsquo;d rather
-          grab yours at the door.
-        </p>
       </div>
 
       <div className="flex flex-col gap-1.5">

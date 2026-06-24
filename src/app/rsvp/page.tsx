@@ -30,7 +30,7 @@ export default async function RsvpPage() {
     plusOne: existing?.rsvp?.plusOne ?? false,
     plusOneName: existing?.rsvp?.plusOneName ?? "",
     dietary: existing?.rsvp?.dietary ?? "",
-    sleeping: existing?.rsvp?.sleeping ?? "UNSURE",
+    sleeping: existing?.rsvp?.sleeping === "HOUSE" ? "HOUSE" : "UNSURE",
     mailingAddress: existing?.rsvp?.mailingAddress ?? "",
     notes: existing?.rsvp?.notes ?? "",
   };
@@ -62,7 +62,7 @@ export default async function RsvpPage() {
           RSVP
         </h1>
         <p className="mt-3 text-white/70">
-          Friday, July 3, 2026 · Mobile Bay · One night only.
+          Friday, July 3, 2026 · Mobile Bay.
         </p>
 
         <div className="mt-10">

@@ -35,14 +35,28 @@ export default function InfoPage() {
           The Info
         </h1>
 
-        <div className="mt-8 border-t border-white/30 pt-7 text-shadow-sm">
-          <p className="text-white/60 text-xs tracking-widest uppercase mb-3">Who, what, when, and where?</p>
-          <p className="text-white leading-relaxed">
-            Us, 3rd annual July 3rd Kickback, July 3rd (Friday), same place as last time.
-          </p>
-        </div>
+        <dl className="mt-8 text-shadow-sm">
+          {[
+            ["It’s happening again?", "Yes."],
+            ["Same place?", "Same place."],
+            ["What do I bring?", "Beer and whatever else."],
+            ["What’s the address again?", "RSVP first and we’ll send it later."],
+          ].map(([label, value]) => (
+            <div
+              key={label}
+              className="border-t border-white/30 py-5 sm:grid sm:grid-cols-[1fr_1fr] sm:gap-6"
+            >
+              <dt className="text-white/60 text-xs tracking-widest uppercase">
+                {label}
+              </dt>
+              <dd className="mt-1.5 sm:mt-0 text-white leading-relaxed">
+                {value}
+              </dd>
+            </div>
+          ))}
+        </dl>
 
-        <div className="mt-10 flex flex-col items-start gap-4">
+        <div className="mt-10 flex flex-col items-start gap-4 border-t border-white/30 pt-8">
           <Link
             href="/rsvp"
             className="inline-flex items-center justify-center rounded-full bg-white text-black px-8 py-3 text-sm tracking-widest uppercase transition-opacity hover:opacity-80"
