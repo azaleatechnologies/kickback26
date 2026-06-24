@@ -50,6 +50,12 @@ export default function Home() {
             >
               Info
             </Link>
+            <Link
+              href="/guests"
+              className="rounded-full border border-white text-white px-8 py-3 text-sm tracking-widest uppercase transition-opacity hover:opacity-70 text-shadow-sm"
+            >
+              Who&rsquo;s going
+            </Link>
           </div>
 
           <div className="mt-8">

@@ -3,10 +3,10 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "July 3rd Kickback '26",
-  description: "Year three. Friday, July 3, 2026. Mobile Bay. One night only.",
+  description: "Year three. Friday, July 3, 2026. Mobile Bay.",
   openGraph: {
     title: "July 3rd Kickback '26",
-    description: "Year three. Friday, July 3, 2026. Mobile Bay. One night only.",
+    description: "Year three. Friday, July 3, 2026. Mobile Bay.",
     url: "https://kickback26.com",
     siteName: "July 3rd Kickback '26",
   },

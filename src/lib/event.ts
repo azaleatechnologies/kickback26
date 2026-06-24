@@ -3,7 +3,7 @@
 
 export const EVENT = {
   name: "July 3rd Kickback '26",
-  tagline: "Year three. Friday, July 3, 2026. Mobile Bay. One night only.",
+  tagline: "Year three. Friday, July 3, 2026. Mobile Bay.",
   // 5:00 PM Central (CDT, UTC-5) on Friday, July 3, 2026.
   startIso: "2026-07-03T17:00:00-05:00",
   // Runs into the night — 1:00 AM Central.

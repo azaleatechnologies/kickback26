@@ -69,14 +69,22 @@ export default async function RsvpPage() {
           {email ? (
             <>
               <RsvpForm initial={initial} />
-              <form action={signOutAction} className="mt-8">
-                <button
-                  type="submit"
+              <div className="mt-8 flex items-center gap-6">
+                <Link
+                  href="/guests"
                   className="text-white/50 text-xs tracking-widest uppercase hover:text-white transition-opacity"
                 >
-                  Sign out
-                </button>
-              </form>
+                  Who&rsquo;s going
+                </Link>
+                <form action={signOutAction}>
+                  <button
+                    type="submit"
+                    className="text-white/50 text-xs tracking-widest uppercase hover:text-white transition-opacity"
+                  >
+                    Sign out
+                  </button>
+                </form>
+              </div>
             </>
           ) : (
             <SignInForm />
