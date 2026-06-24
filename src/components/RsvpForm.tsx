@@ -1,6 +1,7 @@
 "use client";
 
-import { useActionState, useState } from "react";
+import { useActionState, useEffect, useState } from "react";
+import Link from "next/link";
 import { submitRsvp, type RsvpState } from "@/app/actions";
 
 export type RsvpInitial = {
@@ -30,6 +31,69 @@ export default function RsvpForm({ initial }: { initial: RsvpInitial }) {
     null,
   );
   const [plusOne, setPlusOne] = useState(initial.plusOne);
+  const [editing, setEditing] = useState(false);
+
+  // Whenever a save succeeds, drop back out of edit mode so the
+  // confirmation screen shows (including after re-saving an edit).
+  useEffect(() => {
+    if (state?.ok) setEditing(false);
+  }, [state]);
+
+  if (state?.ok && !editing) {
+    const headline =
+      state.status === "GOING"
+        ? "You’re on the list"
+        : state.status === "MAYBE"
+          ? "You’re down as a maybe"
+          : "Thanks for the heads up";
+
+    return (
+      <div className="flex flex-col items-start gap-5" role="status">
+        <div className="flex h-14 w-14 items-center justify-center rounded-full border border-white/40 bg-white/15">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="h-7 w-7 text-white"
+            aria-hidden
+          >
+            <path d="M20 6 9 17l-5-5" />
+          </svg>
+        </div>
+
+        <div>
+          <h2 className="font-display text-white text-4xl sm:text-5xl">
+            {headline}
+          </h2>
+          <p className="mt-2 text-white/80">{state.message}</p>
+        </div>
+
+        <p className="text-white/50 text-sm">
+          Saved for {initial.email}. You can change your answer anytime before
+          the cutoff.
+        </p>
+
+        <div className="mt-2 flex flex-wrap items-center gap-3">
+          <Link
+            href="/guests"
+            className="rounded-full bg-white text-black px-6 py-3 text-sm tracking-widest uppercase transition-opacity hover:opacity-80"
+          >
+            See who&rsquo;s going
+          </Link>
+          <button
+            type="button"
+            onClick={() => setEditing(true)}
+            className="rounded-full border border-white text-white px-6 py-3 text-sm tracking-widest uppercase transition-opacity hover:opacity-70"
+          >
+            Edit my RSVP
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <form action={action} className="flex flex-col gap-5">
@@ -168,11 +232,8 @@ export default function RsvpForm({ initial }: { initial: RsvpInitial }) {
         {pending ? "Saving…" : "Save my RSVP"}
       </button>
 
-      {state && (
-        <p
-          role="status"
-          className={`text-sm ${state.ok ? "text-white" : "text-red-300"}`}
-        >
+      {state && !state.ok && (
+        <p role="status" className="text-sm text-red-300">
           {state.message}
         </p>
       )}

@@ -23,7 +23,9 @@ export async function signOutAction() {
 
 // ---- RSVP submission --------------------------------------------------------
 
-export type RsvpState = { ok: boolean; message: string } | null;
+export type RsvpState =
+  | { ok: boolean; message: string; status?: RsvpStatus }
+  | null;
 
 const STATUSES = Object.values(RsvpStatus);
 const SLEEPING = Object.values(Sleeping);
@@ -100,5 +102,5 @@ export async function submitRsvp(
       : status === RsvpStatus.MAYBE
         ? "Marked as maybe — update it anytime before the cutoff."
         : "Got it — sorry you can't make it.";
-  return { ok: true, message: confirmation };
+  return { ok: true, message: confirmation, status };
 }
