@@ -1,9 +1,8 @@
 import Link from "next/link";
-import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
-import SignInForm from "@/components/SignInForm";
 
-// Always render fresh — depends on the signed-in session and live RSVP data.
+// Always render fresh — reflects live RSVP data. Public: anyone can see who's
+// coming, signed in or not.
 export const dynamic = "force-dynamic";
 
 export const metadata = {
@@ -12,9 +11,9 @@ export const metadata = {
 
 type Guest = { name: string; plusOne: boolean; plusOneName: string | null };
 
-function displayName(name: string | null, email: string): string {
-  const trimmed = (name ?? "").trim();
-  return trimmed || email.split("@")[0];
+function displayName(name: string | null): string {
+  // Public page — never fall back to anything email-derived.
+  return (name ?? "").trim() || "A guest";
 }
 
 function GuestRow({ guest }: { guest: Guest }) {
@@ -31,22 +30,6 @@ function GuestRow({ guest }: { guest: Guest }) {
 }
 
 export default async function GuestsPage() {
-  const session = await auth();
-  const email = session?.user?.email ?? null;
-
-  if (!email) {
-    return (
-      <Shell>
-        <p className="mt-3 text-white/70">
-          Sign in to see who&rsquo;s coming.
-        </p>
-        <div className="mt-10">
-          <SignInForm />
-        </div>
-      </Shell>
-    );
-  }
-
   const rsvps = await prisma.rsvp.findMany({
     where: { status: { in: ["GOING", "MAYBE"] } },
     include: { user: true },
@@ -54,7 +37,7 @@ export default async function GuestsPage() {
   });
 
   const toGuest = (r: (typeof rsvps)[number]): Guest => ({
-    name: displayName(r.user.name, r.user.email),
+    name: displayName(r.user.name),
     plusOne: r.plusOne,
     plusOneName: r.plusOneName,
   });
@@ -103,10 +86,11 @@ export default async function GuestsPage() {
         </section>
       )}
 
-      <div className="mt-12">
+      <div className="mt-12 border-t border-white/20 pt-8">
+        <p className="text-white/70">Not on the list yet?</p>
         <Link
           href="/rsvp"
-          className="inline-flex items-center justify-center rounded-full bg-white text-black px-8 py-3 text-sm tracking-widest uppercase transition-opacity hover:opacity-80"
+          className="mt-3 inline-flex items-center justify-center rounded-full bg-white text-black px-8 py-3 text-sm tracking-widest uppercase transition-opacity hover:opacity-80"
         >
           RSVP
         </Link>
