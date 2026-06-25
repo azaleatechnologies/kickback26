@@ -28,6 +28,10 @@ export default function SignInForm() {
           Send my link
         </button>
       </form>
+      <p className="mt-4 text-white/50 text-xs leading-relaxed">
+        Heads up: the link can land in your spam or junk folder. If it does,
+        mark it &ldquo;Not spam&rdquo; so you get future updates.
+      </p>
     </div>
   );
 }

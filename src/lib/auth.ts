@@ -27,5 +27,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   pages: {
     // Framework-initiated sign-in lands on our own styled page.
     signIn: "/rsvp",
+    // Our own "check your email" screen (warns about the junk folder)
+    // instead of the unstyled Auth.js default.
+    verifyRequest: "/check-email",
   },
 });
